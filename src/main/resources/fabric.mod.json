@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "zp3",
+  "version": "${version}",
+  "name": "ZombiePlague3",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/zpm3/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "ru.gltexture.zpm3.system.datagen.ZPDataGenerator"
+    ],
+    "client": [
+      "ru.gltexture.zpm3.system.proxy.ZPClientInit"
+    ],
+    "server": [
+      "ru.gltexture.zpm3.system.proxy.ZPServerInit"
+    ],
+    "main": [
+      "ru.gltexture.zpm3.system.core.ZombiePlague3"
+    ]
+  },
+  "mixins": [
+    "mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
