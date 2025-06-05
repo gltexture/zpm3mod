@@ -4,20 +4,20 @@
   "version": "${version}",
   "name": "ZombiePlague3",
   "description": "",
-  "authors": [],
+  "authors": ["gltexture"],
   "contact": {},
   "license": "All-Rights-Reserved",
   "icon": "assets/zpm3/icon.png",
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "ru.gltexture.zpm3.system.datagen.ZPDataGenerator"
+      "ru.gltexture.zpm3.system.core.ZPDataGenerator"
     ],
     "client": [
-      "ru.gltexture.zpm3.system.proxy.ZPClientInit"
+      "ru.gltexture.zpm3.proxy.ZPClientInit"
     ],
     "server": [
-      "ru.gltexture.zpm3.system.proxy.ZPServerInit"
+      "ru.gltexture.zpm3.proxy.ZPServerInit"
     ],
     "main": [
       "ru.gltexture.zpm3.system.core.ZombiePlague3"

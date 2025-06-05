@@ -1,4 +1,4 @@
-package ru.gltexture.zpm3.system.proxy;
+package ru.gltexture.zpm3.proxy;
 
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.EnvType;
