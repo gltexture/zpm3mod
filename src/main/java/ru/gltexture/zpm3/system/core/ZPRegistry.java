@@ -1,5 +1,6 @@
 package ru.gltexture.zpm3.system.core;
 
+import net.minecraft.item.ItemGroup;
 import ru.gltexture.zpm3.system.core.sections.ZPSection;
 import ru.gltexture.zpm3.system.exceptions.ZPIOException;
 import ru.gltexture.zpm3.system.objects.ZPItem;
@@ -52,6 +53,7 @@ public final class ZPRegistry {
 
     public static abstract class DefaultRegistryConsumers {
         public static final RegistryConsumer<ZPItem> ITEM = RegistryUtils::registerItem;
+        public static final RegistryConsumer<ItemGroup> TAB = RegistryUtils::registerTab;
     }
 
     @FunctionalInterface

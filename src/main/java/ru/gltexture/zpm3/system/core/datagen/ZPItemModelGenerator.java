@@ -11,7 +11,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public final class ZPItemModelGenerator extends FabricModelProvider {
-    public static final Set<Item> ITEMS_TO_GEN = new HashSet<>();
 
     public ZPItemModelGenerator(FabricDataOutput output) {
         super(output);
@@ -24,7 +23,7 @@ public final class ZPItemModelGenerator extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        for (Item item : ZPItemModelGenerator.ITEMS_TO_GEN) {
+        for (Item item : GenList.GEN_ITEMS) {
             itemModelGenerator.register(item, Models.GENERATED);
         }
     }

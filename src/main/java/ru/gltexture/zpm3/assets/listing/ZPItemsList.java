@@ -8,5 +8,5 @@ import ru.gltexture.zpm3.system.objects.ZPItem;
 
 @ZPSection(name = "zp_items", section = Section.ITEMS, priority = 0)
 public abstract class ZPItemsList {
-    public static ZPItem acid_bottle = new AcidBottleItem(new Item.Settings(), "acid_bottle");
+    public static final ZPItem acid_bottle = new AcidBottleItem(new Item.Settings(), "acid_bottle");
 }

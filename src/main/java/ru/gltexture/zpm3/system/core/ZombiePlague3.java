@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.gltexture.zpm3.assets.listing.ZPItemsList;
+import ru.gltexture.zpm3.assets.listing.ZPTabsList;
 
 public class ZombiePlague3 implements ModInitializer {
     public static final Project MOD_INFO = new Project("ZombiePlagueMod3", "zpm3", "In Development");
@@ -19,6 +20,7 @@ public class ZombiePlague3 implements ModInitializer {
     @Override
     public void onInitialize() {
         this.getZpRegistry().addClassWithRegistry(ZPItemsList.class);
+        this.getZpRegistry().addClassWithRegistry(ZPTabsList.class);
 
         ZombiePlague3.info(ZombiePlague3.MOD_INFO.MOD_NAME() + " - " + ZombiePlague3.MOD_INFO.VERSION());
         this.getZpRegistry().launch();
