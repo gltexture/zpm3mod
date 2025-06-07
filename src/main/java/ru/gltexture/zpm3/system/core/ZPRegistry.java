@@ -1,7 +1,11 @@
 package ru.gltexture.zpm3.system.core;
 
 import net.minecraft.item.ItemGroup;
-import ru.gltexture.zpm3.system.core.sections.ZPSection;
+import org.jetbrains.annotations.NotNull;
+import ru.gltexture.zpm3.assets.listing.ZPTabsList;
+import ru.gltexture.zpm3.system.core.registry.processors.ZPItemProcessor;
+import ru.gltexture.zpm3.system.core.registry.processors.ZPTabProcessor;
+import ru.gltexture.zpm3.system.core.registry.sections.ZPSection;
 import ru.gltexture.zpm3.system.exceptions.ZPIOException;
 import ru.gltexture.zpm3.system.objects.ZPItem;
 import ru.gltexture.zpm3.utils.Pair;
@@ -39,6 +43,7 @@ public final class ZPRegistry {
             final Class<?> clazz = pair.getSecond();
 
             ZombiePlague3.info("Registry entry: " + zpSection.name());
+            zpSection.section().getConsumer().preProcessing();
             for (Field field : clazz.getDeclaredFields()) {
                 try {
                     field.setAccessible(true);
@@ -48,21 +53,32 @@ public final class ZPRegistry {
                     throw new ZPIOException(e);
                 }
             }
+            zpSection.section().getConsumer().postProcessing();
         }
     }
 
     public static abstract class DefaultRegistryConsumers {
-        public static final RegistryConsumer<ZPItem> ITEM = RegistryUtils::registerItem;
-        public static final RegistryConsumer<ItemGroup> TAB = RegistryUtils::registerTab;
+        public static final RegistryProcessor<ZPItem> ITEM = new ZPItemProcessor();
+        public static final RegistryProcessor<ZPTabsList.ZpTab> TAB = new ZPTabProcessor();
+    }
+
+    public interface RegistryProcessor<T> {
+        void preProcessing();
+        RegistryConsumer<T> registryConsumer();
+        void postProcessing();
+
+        @SuppressWarnings("all")
+        default void registerObj(Object object) {
+            T obj = (T) object;
+            this.genCollector().add(obj);
+            this.registryConsumer().register(obj);
+        }
+
+        @NotNull List<T> genCollector();
     }
 
     @FunctionalInterface
     public interface RegistryConsumer<T> {
         void register(T t);
-
-        @SuppressWarnings("all")
-        default void registerObj(Object object) {
-            this.register((T) object);
-        }
     }
 }

@@ -6,9 +6,7 @@ import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
 import net.minecraft.item.Item;
-
-import java.util.HashSet;
-import java.util.Set;
+import ru.gltexture.zpm3.system.core.registry.GenList;
 
 public final class ZPItemModelGenerator extends FabricModelProvider {
 
